@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: smart-subscriptions
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/subscriptions}
+    username: ${SPRING_DATASOURCE_USERNAME:subscriptions}
+    password: ${SPRING_DATASOURCE_PASSWORD:subscriptions}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+  jackson:
+    default-property-inclusion: non_null
+
+springdoc:
+  swagger-ui:
+    path: /docs
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
