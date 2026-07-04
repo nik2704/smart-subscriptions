@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.subscriptions.domain.service.ObligationServiceTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-07-04T16:27:34.037Z" hostname="ZANcomp" time="1.054">
+  <properties/>
+  <testcase name="shouldApplyLazyExpiryOnlyForNonRecurringActiveObligations()" classname="com.example.subscriptions.domain.service.ObligationServiceTest" time="0.99"/>
+  <testcase name="shouldPayYearly()" classname="com.example.subscriptions.domain.service.ObligationServiceTest" time="0.012"/>
+  <testcase name="shouldCreateExpiredWhenDateInPast()" classname="com.example.subscriptions.domain.service.ObligationServiceTest" time="0.008"/>
+  <testcase name="shouldPayMonthlyWithoutDateDriftFor31st()" classname="com.example.subscriptions.domain.service.ObligationServiceTest" time="0.005"/>
+  <testcase name="shouldRejectPayForNonActiveStatus()" classname="com.example.subscriptions.domain.service.ObligationServiceTest" time="0.007"/>
+  <testcase name="shouldPayQuarterly()" classname="com.example.subscriptions.domain.service.ObligationServiceTest" time="0.005"/>
+  <testcase name="shouldPayOneTimeAndCancel()" classname="com.example.subscriptions.domain.service.ObligationServiceTest" time="0.004"/>
+  <testcase name="shouldReturnWarningWhenDuplicateActiveTitleExists()" classname="com.example.subscriptions.domain.service.ObligationServiceTest" time="0.006"/>
+  <testcase name="shouldRejectCancelForNonActiveStatus()" classname="com.example.subscriptions.domain.service.ObligationServiceTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/home/nikolay/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.17.6/17b32fd9f57deef02842f7f05abc4ad8127fe34e/byte-buddy-agent-1.17.6.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>
