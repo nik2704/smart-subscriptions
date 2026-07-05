@@ -1,4 +1,4 @@
-package com.example.subscriptions.domain.model;
+package com.example.subscriptions.domain.enums;
 
 public enum ObligationCategory {
     SUBSCRIPTION,

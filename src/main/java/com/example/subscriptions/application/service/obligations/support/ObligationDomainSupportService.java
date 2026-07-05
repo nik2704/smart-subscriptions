@@ -1,7 +1,7 @@
 package com.example.subscriptions.application.service.obligations.support;
 
 import com.example.subscriptions.domain.model.Obligation;
-import com.example.subscriptions.domain.model.ObligationStatus;
+import com.example.subscriptions.domain.enums.ObligationStatus;
 import com.example.subscriptions.repository.ObligationRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;

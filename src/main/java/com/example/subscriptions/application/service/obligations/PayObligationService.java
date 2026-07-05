@@ -5,7 +5,7 @@ import com.example.subscriptions.application.mapper.ObligationMapper;
 import com.example.subscriptions.application.service.date.DateCalculatorService;
 import com.example.subscriptions.application.service.obligations.support.ObligationDomainSupportService;
 import com.example.subscriptions.domain.model.Obligation;
-import com.example.subscriptions.domain.model.ObligationStatus;
+import com.example.subscriptions.domain.enums.ObligationStatus;
 import com.example.subscriptions.domain.model.Payment;
 import com.example.subscriptions.exception.BusinessException;
 import com.example.subscriptions.repository.ObligationRepository;

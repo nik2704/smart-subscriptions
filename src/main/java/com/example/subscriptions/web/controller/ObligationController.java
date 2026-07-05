@@ -1,8 +1,8 @@
 package com.example.subscriptions.web.controller;
 
 import com.example.subscriptions.application.service.obligations.*;
-import com.example.subscriptions.domain.model.ObligationCategory;
-import com.example.subscriptions.domain.model.ObligationStatus;
+import com.example.subscriptions.domain.enums.ObligationCategory;
+import com.example.subscriptions.domain.enums.ObligationStatus;
 import com.example.subscriptions.application.dto.CreateObligationRequest;
 import com.example.subscriptions.application.dto.CreateObligationResult;
 import com.example.subscriptions.application.dto.ObligationResponse;

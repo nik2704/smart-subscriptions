@@ -1,6 +1,6 @@
 package com.example.subscriptions.application.service.date;
 
-import com.example.subscriptions.domain.model.RecurrenceType;
+import com.example.subscriptions.domain.enums.RecurrenceType;
 import java.time.LocalDate;
 import org.springframework.stereotype.Service;
 

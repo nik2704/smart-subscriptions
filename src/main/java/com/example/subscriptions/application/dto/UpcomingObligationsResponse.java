@@ -1,5 +1,7 @@
 package com.example.subscriptions.application.dto;
 
+import com.example.subscriptions.domain.enums.CurrencyCode;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
@@ -16,7 +18,7 @@ public record UpcomingObligationsResponse(
             String title,
             LocalDate nextPaymentDate,
             BigDecimal amount,
-            String currency
+            CurrencyCode currency
     ) {
     }
 }

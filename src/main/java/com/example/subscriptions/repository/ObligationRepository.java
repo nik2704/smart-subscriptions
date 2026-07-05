@@ -1,8 +1,8 @@
 package com.example.subscriptions.repository;
 
 import com.example.subscriptions.domain.model.Obligation;
-import com.example.subscriptions.domain.model.ObligationCategory;
-import com.example.subscriptions.domain.model.ObligationStatus;
+import com.example.subscriptions.domain.enums.ObligationCategory;
+import com.example.subscriptions.domain.enums.ObligationStatus;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;

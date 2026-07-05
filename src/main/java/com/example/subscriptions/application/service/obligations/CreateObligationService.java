@@ -4,7 +4,7 @@ import com.example.subscriptions.application.dto.CreateObligationRequest;
 import com.example.subscriptions.application.dto.CreateObligationResult;
 import com.example.subscriptions.application.mapper.ObligationMapper;
 import com.example.subscriptions.domain.model.Obligation;
-import com.example.subscriptions.domain.model.ObligationStatus;
+import com.example.subscriptions.domain.enums.ObligationStatus;
 import com.example.subscriptions.repository.ObligationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

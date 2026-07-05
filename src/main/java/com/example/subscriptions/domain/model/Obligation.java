@@ -1,5 +1,9 @@
 package com.example.subscriptions.domain.model;
 
+import com.example.subscriptions.domain.enums.CurrencyCode;
+import com.example.subscriptions.domain.enums.ObligationCategory;
+import com.example.subscriptions.domain.enums.ObligationStatus;
+import com.example.subscriptions.domain.enums.RecurrenceType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -30,8 +34,9 @@ public class Obligation {
     @Column(nullable = false, precision = 19, scale = 2)
     private BigDecimal amount;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 3)
-    private String currency;
+    private CurrencyCode currency;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

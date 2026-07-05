@@ -7,10 +7,11 @@ import static org.mockito.Mockito.when;
 import com.example.subscriptions.application.dto.CreateObligationRequest;
 import com.example.subscriptions.application.dto.CreateObligationResult;
 import com.example.subscriptions.application.mapper.ObligationMapper;
+import com.example.subscriptions.domain.enums.CurrencyCode;
 import com.example.subscriptions.domain.model.Obligation;
-import com.example.subscriptions.domain.model.ObligationCategory;
-import com.example.subscriptions.domain.model.ObligationStatus;
-import com.example.subscriptions.domain.model.RecurrenceType;
+import com.example.subscriptions.domain.enums.ObligationCategory;
+import com.example.subscriptions.domain.enums.ObligationStatus;
+import com.example.subscriptions.domain.enums.RecurrenceType;
 import com.example.subscriptions.repository.ObligationRepository;
 import java.math.BigDecimal;
 import java.time.Clock;
@@ -51,7 +52,7 @@ class CreateObligationServiceTest {
         CreateObligationRequest request = new CreateObligationRequest(
                 "Netflix",
                 new BigDecimal("999.00"),
-                "RUB",
+                CurrencyCode.RUB,
                 ObligationCategory.SUBSCRIPTION,
                 RecurrenceType.MONTHLY,
                 LocalDate.of(2026, 7, 10)
@@ -84,7 +85,7 @@ class CreateObligationServiceTest {
         CreateObligationRequest request = new CreateObligationRequest(
                 "Старый чек",
                 new BigDecimal("100.00"),
-                "RUB",
+                CurrencyCode.RUB,
                 ObligationCategory.BILL,
                 null,
                 LocalDate.of(2026, 7, 1)
@@ -110,7 +111,7 @@ class CreateObligationServiceTest {
         obligation.setId(id);
         obligation.setTitle("Test");
         obligation.setAmount(new BigDecimal("100.00"));
-        obligation.setCurrency("RUB");
+        obligation.setCurrency(CurrencyCode.RUB);
         obligation.setCategory(ObligationCategory.SUBSCRIPTION);
         obligation.setRecurrence(RecurrenceType.MONTHLY);
         obligation.setNextPaymentDate(nextPaymentDate);

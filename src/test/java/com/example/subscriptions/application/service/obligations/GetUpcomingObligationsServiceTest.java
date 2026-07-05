@@ -6,10 +6,11 @@ import static org.mockito.Mockito.when;
 import com.example.subscriptions.application.dto.UpcomingObligationsResponse;
 import com.example.subscriptions.application.mapper.ObligationMapper;
 import com.example.subscriptions.application.service.obligations.support.ObligationDomainSupportService;
+import com.example.subscriptions.domain.enums.CurrencyCode;
 import com.example.subscriptions.domain.model.Obligation;
-import com.example.subscriptions.domain.model.ObligationCategory;
-import com.example.subscriptions.domain.model.ObligationStatus;
-import com.example.subscriptions.domain.model.RecurrenceType;
+import com.example.subscriptions.domain.enums.ObligationCategory;
+import com.example.subscriptions.domain.enums.ObligationStatus;
+import com.example.subscriptions.domain.enums.RecurrenceType;
 import com.example.subscriptions.repository.ObligationRepository;
 import java.math.BigDecimal;
 import java.time.Clock;
@@ -54,7 +55,7 @@ class GetUpcomingObligationsServiceTest {
                 UUID.randomUUID(),
                 "Netflix",
                 new BigDecimal("9.99"),
-                "USD",
+                CurrencyCode.USD,
                 ObligationCategory.SUBSCRIPTION,
                 RecurrenceType.MONTHLY,
                 LocalDate.of(2026, 7, 5)
@@ -64,7 +65,7 @@ class GetUpcomingObligationsServiceTest {
                 UUID.randomUUID(),
                 "Insurance",
                 new BigDecimal("1000.00"),
-                "RUB",
+                CurrencyCode.RUB,
                 ObligationCategory.INSURANCE,
                 null,
                 LocalDate.of(2026, 7, 6)
@@ -88,7 +89,7 @@ class GetUpcomingObligationsServiceTest {
             UUID id,
             String title,
             BigDecimal amount,
-            String currency,
+            CurrencyCode currency,
             ObligationCategory category,
             RecurrenceType recurrenceType,
             LocalDate nextPaymentDate

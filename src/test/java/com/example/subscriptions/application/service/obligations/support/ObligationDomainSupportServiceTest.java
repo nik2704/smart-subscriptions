@@ -4,9 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
+import com.example.subscriptions.domain.enums.CurrencyCode;
 import com.example.subscriptions.domain.model.Obligation;
-import com.example.subscriptions.domain.model.ObligationCategory;
-import com.example.subscriptions.domain.model.ObligationStatus;
+import com.example.subscriptions.domain.enums.ObligationCategory;
+import com.example.subscriptions.domain.enums.ObligationStatus;
 import com.example.subscriptions.repository.ObligationRepository;
 import java.math.BigDecimal;
 import java.time.Clock;
@@ -55,7 +56,7 @@ class ObligationDomainSupportServiceTest {
         obligation.setId(id);
         obligation.setTitle("Test");
         obligation.setAmount(new BigDecimal("100.00"));
-        obligation.setCurrency("RUB");
+        obligation.setCurrency(CurrencyCode.RUB);
         obligation.setCategory(ObligationCategory.SUBSCRIPTION);
         obligation.setRecurrence(null);
         obligation.setNextPaymentDate(nextPaymentDate);

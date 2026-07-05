@@ -1,8 +1,9 @@
 package com.example.subscriptions.application.dto;
 
-import com.example.subscriptions.domain.model.ObligationCategory;
-import com.example.subscriptions.domain.model.ObligationStatus;
-import com.example.subscriptions.domain.model.RecurrenceType;
+import com.example.subscriptions.domain.enums.CurrencyCode;
+import com.example.subscriptions.domain.enums.ObligationCategory;
+import com.example.subscriptions.domain.enums.ObligationStatus;
+import com.example.subscriptions.domain.enums.RecurrenceType;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -12,7 +13,7 @@ public record ObligationResponse(
         UUID id,
         String title,
         BigDecimal amount,
-        String currency,
+        CurrencyCode currency,
         ObligationCategory category,
         RecurrenceType recurrence,
         LocalDate nextPaymentDate,

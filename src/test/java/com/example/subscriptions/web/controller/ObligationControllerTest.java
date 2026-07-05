@@ -21,9 +21,10 @@ import com.example.subscriptions.application.service.obligations.DeleteObligatio
 import com.example.subscriptions.application.service.obligations.GetObligationsService;
 import com.example.subscriptions.application.service.obligations.GetUpcomingObligationsService;
 import com.example.subscriptions.application.service.obligations.PayObligationService;
-import com.example.subscriptions.domain.model.ObligationCategory;
-import com.example.subscriptions.domain.model.ObligationStatus;
-import com.example.subscriptions.domain.model.RecurrenceType;
+import com.example.subscriptions.domain.enums.CurrencyCode;
+import com.example.subscriptions.domain.enums.ObligationCategory;
+import com.example.subscriptions.domain.enums.ObligationStatus;
+import com.example.subscriptions.domain.enums.RecurrenceType;
 import com.example.subscriptions.web.advice.GlobalExceptionHandler;
 import com.example.subscriptions.web.sse.ObligationEventsPublisher;
 import java.math.BigDecimal;
@@ -74,7 +75,7 @@ class ObligationControllerTest {
                 UUID.randomUUID(),
                 "Netflix",
                 new BigDecimal("999.00"),
-                "RUB",
+                CurrencyCode.RUB,
                 LocalDate.of(2026, 7, 10),
                 ObligationStatus.ACTIVE
         );
@@ -114,7 +115,7 @@ class ObligationControllerTest {
                                 id,
                                 "Netflix",
                                 new BigDecimal("999.00"),
-                                "RUB",
+                                CurrencyCode.RUB,
                                 LocalDate.of(2026, 7, 10),
                                 ObligationStatus.ACTIVE
                         )
@@ -139,7 +140,7 @@ class ObligationControllerTest {
                                 id,
                                 "Netflix",
                                 new BigDecimal("9.99"),
-                                "USD",
+                                CurrencyCode.USD,
                                 LocalDate.of(2026, 7, 10),
                                 ObligationStatus.ACTIVE
                         )
@@ -151,7 +152,7 @@ class ObligationControllerTest {
                                 "Netflix",
                                 LocalDate.of(2026, 7, 10),
                                 new BigDecimal("9.99"),
-                                "USD"
+                                CurrencyCode.USD
                         )
                 )
         );
@@ -176,7 +177,7 @@ class ObligationControllerTest {
                         obligationId,
                         "Netflix",
                         new BigDecimal("9.99"),
-                        "USD",
+                        CurrencyCode.USD,
                         LocalDate.of(2026, 8, 10),
                         ObligationStatus.ACTIVE
                 ),
@@ -184,7 +185,7 @@ class ObligationControllerTest {
                         paymentId,
                         obligationId,
                         new BigDecimal("9.99"),
-                        "USD",
+                        CurrencyCode.USD,
                         Instant.parse("2026-07-05T10:00:00Z")
                 )
         );
@@ -207,7 +208,7 @@ class ObligationControllerTest {
                         obligationId,
                         "Spotify",
                         new BigDecimal("12.99"),
-                        "USD",
+                        CurrencyCode.USD,
                         LocalDate.of(2026, 7, 18),
                         ObligationStatus.CANCELLED
                 )
@@ -233,7 +234,7 @@ class ObligationControllerTest {
             UUID id,
             String title,
             BigDecimal amount,
-            String currency,
+            CurrencyCode currency,
             LocalDate nextPaymentDate,
             ObligationStatus status
     ) {

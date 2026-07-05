@@ -4,9 +4,10 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.example.subscriptions.application.service.obligations.support.ObligationDomainSupportService;
+import com.example.subscriptions.domain.enums.CurrencyCode;
 import com.example.subscriptions.domain.model.Obligation;
-import com.example.subscriptions.domain.model.ObligationCategory;
-import com.example.subscriptions.domain.model.ObligationStatus;
+import com.example.subscriptions.domain.enums.ObligationCategory;
+import com.example.subscriptions.domain.enums.ObligationStatus;
 import com.example.subscriptions.repository.ObligationRepository;
 import com.example.subscriptions.web.sse.ObligationEventsPublisher;
 import java.math.BigDecimal;
@@ -58,7 +59,7 @@ class DeleteObligationServiceTest {
         obligation.setId(id);
         obligation.setTitle("Test");
         obligation.setAmount(new BigDecimal("100.00"));
-        obligation.setCurrency("RUB");
+        obligation.setCurrency(CurrencyCode.RUB);
         obligation.setCategory(ObligationCategory.BILL);
         obligation.setNextPaymentDate(LocalDate.of(2026, 7, 10));
         obligation.setStatus(ObligationStatus.ACTIVE);

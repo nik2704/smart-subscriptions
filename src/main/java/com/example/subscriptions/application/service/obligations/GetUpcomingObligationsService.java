@@ -4,7 +4,7 @@ import com.example.subscriptions.application.dto.UpcomingObligationsResponse;
 import com.example.subscriptions.application.mapper.ObligationMapper;
 import com.example.subscriptions.application.service.obligations.support.ObligationDomainSupportService;
 import com.example.subscriptions.domain.model.Obligation;
-import com.example.subscriptions.domain.model.ObligationCategory;
+import com.example.subscriptions.domain.enums.ObligationCategory;
 import com.example.subscriptions.repository.ObligationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -34,7 +34,7 @@ public class GetUpcomingObligationsService {
 
         Map<String, BigDecimal> totals = obligations.stream().collect(
                 Collectors.groupingBy(
-                        Obligation::getCurrency,
+                        obligation -> obligation.getCurrency().name(),
                         Collectors.reducing(BigDecimal.ZERO, Obligation::getAmount, BigDecimal::add)
                 )
         );
