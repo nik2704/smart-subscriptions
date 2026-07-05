@@ -1,4 +1,4 @@
-package com.example.subscriptions.domain.service;
+package com.example.subscriptions.application.service.date;
 
 import com.example.subscriptions.domain.model.RecurrenceType;
 import java.time.LocalDate;

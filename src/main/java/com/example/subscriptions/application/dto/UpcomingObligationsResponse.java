@@ -1,4 +1,4 @@
-package com.example.subscriptions.domain.dto;
+package com.example.subscriptions.application.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

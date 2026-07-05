@@ -1,8 +1,8 @@
-package com.example.subscriptions.domain.mapper;
+package com.example.subscriptions.application.mapper;
 
-import com.example.subscriptions.domain.dto.ObligationResponse;
-import com.example.subscriptions.domain.dto.PaymentResponse;
-import com.example.subscriptions.domain.dto.UpcomingObligationsResponse;
+import com.example.subscriptions.application.dto.ObligationResponse;
+import com.example.subscriptions.application.dto.PaymentResponse;
+import com.example.subscriptions.application.dto.UpcomingObligationsResponse;
 import com.example.subscriptions.domain.model.Obligation;
 import com.example.subscriptions.domain.model.Payment;
 import org.mapstruct.Mapper;

@@ -1,4 +1,4 @@
-package com.example.subscriptions.domain.dto;
+package com.example.subscriptions.application.dto;
 
 public record CreateObligationResult(
         ObligationResponse obligation,

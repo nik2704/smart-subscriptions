@@ -1,4 +1,4 @@
-package com.example.subscriptions.domain.dto;
+package com.example.subscriptions.application.dto;
 
 import com.example.subscriptions.domain.model.ObligationCategory;
 import com.example.subscriptions.domain.model.RecurrenceType;

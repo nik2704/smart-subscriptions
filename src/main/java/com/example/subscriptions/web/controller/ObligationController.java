@@ -1,13 +1,13 @@
 package com.example.subscriptions.web.controller;
 
+import com.example.subscriptions.application.service.obligations.*;
 import com.example.subscriptions.domain.model.ObligationCategory;
 import com.example.subscriptions.domain.model.ObligationStatus;
-import com.example.subscriptions.domain.dto.CreateObligationRequest;
-import com.example.subscriptions.domain.dto.CreateObligationResult;
-import com.example.subscriptions.domain.dto.ObligationResponse;
-import com.example.subscriptions.domain.dto.PayObligationResponse;
-import com.example.subscriptions.domain.dto.UpcomingObligationsResponse;
-import com.example.subscriptions.domain.service.ObligationService;
+import com.example.subscriptions.application.dto.CreateObligationRequest;
+import com.example.subscriptions.application.dto.CreateObligationResult;
+import com.example.subscriptions.application.dto.ObligationResponse;
+import com.example.subscriptions.application.dto.PayObligationResponse;
+import com.example.subscriptions.application.dto.UpcomingObligationsResponse;
 import jakarta.validation.Valid;
 import java.util.List;
 import java.util.UUID;
@@ -25,13 +25,18 @@ import com.example.subscriptions.web.sse.ObligationEventsPublisher;
 @Validated
 public class ObligationController {
 
-    private final ObligationService obligationService;
+    private final CreateObligationService createObligationService;
+    private final GetObligationsService getObligationsService;
+    private final GetUpcomingObligationsService getUpcomingObligationsService;
+    private final PayObligationService payObligationService;
+    private final CancelObligationService cancelObligationService;
+    private final DeleteObligationService deleteObligationService;
     private final ObligationEventsPublisher eventsPublisher;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public CreateObligationResult create(@Valid @RequestBody CreateObligationRequest request) {
-        return obligationService.create(request);
+        return createObligationService.create(request);
     }
 
     @GetMapping
@@ -39,27 +44,27 @@ public class ObligationController {
             @RequestParam(required = false) ObligationCategory category,
             @RequestParam(required = false) ObligationStatus status
     ) {
-        return obligationService.getAll(category, status);
+        return getObligationsService.getAll(category, status);
     }
 
     @GetMapping("/upcoming")
     public UpcomingObligationsResponse getUpcoming(@RequestParam(defaultValue = "7") int days) {
-        return obligationService.getUpcoming(days);
+        return getUpcomingObligationsService.getUpcoming(days);
     }
 
     @PostMapping("/{id}/pay")
     public PayObligationResponse pay(@PathVariable UUID id) {
-        return obligationService.pay(id);
+        return payObligationService.pay(id);
     }
 
     @PatchMapping("/{id}/cancel")
     public ObligationResponse cancel(@PathVariable UUID id) {
-        return obligationService.cancel(id);
+        return cancelObligationService.cancel(id);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable UUID id) {
-        obligationService.delete(id);
+        deleteObligationService.delete(id);
         return ResponseEntity.noContent().build();
     }
 
