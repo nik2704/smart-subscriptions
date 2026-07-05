@@ -39,6 +39,7 @@ class GetUpcomingObligationsServiceTest {
     void setUp() {
         ObligationMapper mapper = Mappers.getMapper(ObligationMapper.class);
         Clock clock = Clock.fixed(Instant.parse("2026-07-04T00:00:00Z"), ZoneOffset.UTC);
+
         getUpcomingObligationsService = new GetUpcomingObligationsService(
                 obligationRepository,
                 mapper,

@@ -41,7 +41,9 @@ class ObligationDomainSupportServiceTest {
 
         when(obligationRepository.findByStatusAndRecurrenceIsNullAndNextPaymentDateBefore(any(), any()))
                 .thenReturn(List.of(oneTimeExpired));
-        when(obligationRepository.saveAll(any())).thenAnswer(invocation -> invocation.getArgument(0));
+
+        when(obligationRepository.saveAll(any())).
+                thenAnswer(invocation -> invocation.getArgument(0));
 
         supportService.applyLazyExpiry();
 

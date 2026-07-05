@@ -38,6 +38,7 @@ class CreateObligationServiceTest {
     void setUp() {
         ObligationMapper mapper = Mappers.getMapper(ObligationMapper.class);
         Clock clock = Clock.fixed(Instant.parse("2026-07-04T00:00:00Z"), ZoneOffset.UTC);
+
         createObligationService = new CreateObligationService(
                 obligationRepository,
                 mapper,
@@ -57,7 +58,14 @@ class CreateObligationServiceTest {
         );
 
         when(obligationRepository.findFirstByStatusAndTitleIgnoreCase(ObligationStatus.ACTIVE, "Netflix"))
-                .thenReturn(Optional.of(obligation(UUID.randomUUID(), RecurrenceType.MONTHLY, LocalDate.of(2026, 7, 10), ObligationStatus.ACTIVE)));
+                .thenReturn(
+                        Optional.of(
+                                obligation(
+                                        UUID.randomUUID(),
+                                        LocalDate.of(2026, 7, 10)
+                                )
+                        )
+                );
 
         when(obligationRepository.save(any())).thenAnswer(invocation -> {
             Obligation saved = invocation.getArgument(0);
@@ -88,6 +96,7 @@ class CreateObligationServiceTest {
         when(obligationRepository.save(any())).thenAnswer(invocation -> {
             Obligation saved = invocation.getArgument(0);
             saved.prePersist();
+
             return saved;
         });
 
@@ -96,16 +105,16 @@ class CreateObligationServiceTest {
         assertThat(result.obligation().status()).isEqualTo(ObligationStatus.EXPIRED);
     }
 
-    private Obligation obligation(UUID id, RecurrenceType recurrenceType, LocalDate nextPaymentDate, ObligationStatus status) {
+    private Obligation obligation(UUID id, LocalDate nextPaymentDate) {
         Obligation obligation = new Obligation();
         obligation.setId(id);
         obligation.setTitle("Test");
         obligation.setAmount(new BigDecimal("100.00"));
         obligation.setCurrency("RUB");
         obligation.setCategory(ObligationCategory.SUBSCRIPTION);
-        obligation.setRecurrence(recurrenceType);
+        obligation.setRecurrence(RecurrenceType.MONTHLY);
         obligation.setNextPaymentDate(nextPaymentDate);
-        obligation.setStatus(status);
+        obligation.setStatus(ObligationStatus.ACTIVE);
         obligation.setCreatedAt(Instant.now());
         obligation.setUpdatedAt(Instant.now());
         return obligation;

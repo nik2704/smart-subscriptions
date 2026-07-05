@@ -44,6 +44,7 @@ class PayObligationServiceTest {
     void setUp() {
         ObligationMapper mapper = Mappers.getMapper(ObligationMapper.class);
         DateCalculatorService dateCalculatorService = new DateCalculatorService();
+
         payObligationService = new PayObligationService(
                 obligationRepository,
                 paymentRepository,
@@ -64,6 +65,7 @@ class PayObligationServiceTest {
             payment.prePersist();
             return payment;
         });
+
         when(obligationRepository.save(any())).thenAnswer(invocation -> invocation.getArgument(0));
 
         PayObligationResponse response = payObligationService.pay(id);
@@ -93,6 +95,7 @@ class PayObligationServiceTest {
             payment.prePersist();
             return payment;
         });
+
         when(obligationRepository.save(any())).thenAnswer(invocation -> invocation.getArgument(0));
 
         PayObligationResponse response = payObligationService.pay(id);
@@ -116,11 +119,13 @@ class PayObligationServiceTest {
         Obligation obligation = obligation(id, recurrenceType, source, ObligationStatus.ACTIVE);
 
         when(obligationDomainSupportService.findByIdOrThrow(id)).thenReturn(obligation);
+
         when(paymentRepository.save(any())).thenAnswer(invocation -> {
             Payment payment = invocation.getArgument(0);
             payment.prePersist();
             return payment;
         });
+
         when(obligationRepository.save(any())).thenAnswer(invocation -> invocation.getArgument(0));
 
         PayObligationResponse response = payObligationService.pay(id);

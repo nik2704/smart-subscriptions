@@ -36,6 +36,7 @@ class CancelObligationServiceTest {
     @BeforeEach
     void setUp() {
         ObligationMapper mapper = Mappers.getMapper(ObligationMapper.class);
+
         cancelObligationService = new CancelObligationService(
                 obligationRepository,
                 mapper,
@@ -49,6 +50,7 @@ class CancelObligationServiceTest {
         Obligation obligation = obligation(id, ObligationStatus.ACTIVE);
 
         when(obligationDomainSupportService.findByIdOrThrow(id)).thenReturn(obligation);
+
         when(obligationRepository.save(any())).thenAnswer(invocation -> invocation.getArgument(0));
 
         var response = cancelObligationService.cancel(id);

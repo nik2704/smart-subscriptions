@@ -35,6 +35,7 @@ class GetObligationsServiceTest {
     @BeforeEach
     void setUp() {
         ObligationMapper mapper = Mappers.getMapper(ObligationMapper.class);
+
         getObligationsService = new GetObligationsService(
                 obligationRepository,
                 mapper,
