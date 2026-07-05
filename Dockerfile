@@ -1,10 +1,6 @@
-FROM gradle:8.14.2-jdk21-alpine AS builder
-WORKDIR /app
-COPY . .
-RUN gradle clean bootJar --no-daemon
+FROM dh-mirror.gitverse.ru/eclipse-temurin:21-jre-alpine
 
-FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
-COPY --from=builder /app/build/libs/*.jar app.jar
+COPY build/libs/smart-subscriptions-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
