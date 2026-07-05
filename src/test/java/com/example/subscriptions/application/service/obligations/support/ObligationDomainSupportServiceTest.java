@@ -27,12 +27,11 @@ class ObligationDomainSupportServiceTest {
     @Mock
     private ObligationRepository obligationRepository;
 
-    private Clock clock;
     private ObligationDomainSupportService supportService;
 
     @BeforeEach
     void setUp() {
-        clock = Clock.fixed(Instant.parse("2026-07-04T00:00:00Z"), ZoneOffset.UTC);
+        Clock clock = Clock.fixed(Instant.parse("2026-07-04T00:00:00Z"), ZoneOffset.UTC);
         supportService = new ObligationDomainSupportService(obligationRepository, clock);
     }
 

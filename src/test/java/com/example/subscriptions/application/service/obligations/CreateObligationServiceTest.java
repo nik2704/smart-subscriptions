@@ -32,14 +32,12 @@ class CreateObligationServiceTest {
     @Mock
     private ObligationRepository obligationRepository;
 
-    private ObligationMapper mapper;
-    private Clock clock;
     private CreateObligationService createObligationService;
 
     @BeforeEach
     void setUp() {
-        mapper = Mappers.getMapper(ObligationMapper.class);
-        clock = Clock.fixed(Instant.parse("2026-07-04T00:00:00Z"), ZoneOffset.UTC);
+        ObligationMapper mapper = Mappers.getMapper(ObligationMapper.class);
+        Clock clock = Clock.fixed(Instant.parse("2026-07-04T00:00:00Z"), ZoneOffset.UTC);
         createObligationService = new CreateObligationService(
                 obligationRepository,
                 mapper,

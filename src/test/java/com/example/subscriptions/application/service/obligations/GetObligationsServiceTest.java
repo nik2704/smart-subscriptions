@@ -30,12 +30,11 @@ class GetObligationsServiceTest {
     @Mock
     private ObligationDomainSupportService obligationDomainSupportService;
 
-    private ObligationMapper mapper;
     private GetObligationsService getObligationsService;
 
     @BeforeEach
     void setUp() {
-        mapper = Mappers.getMapper(ObligationMapper.class);
+        ObligationMapper mapper = Mappers.getMapper(ObligationMapper.class);
         getObligationsService = new GetObligationsService(
                 obligationRepository,
                 mapper,

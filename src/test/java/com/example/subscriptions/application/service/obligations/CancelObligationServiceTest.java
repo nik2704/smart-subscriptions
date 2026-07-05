@@ -31,12 +31,11 @@ class CancelObligationServiceTest {
     @Mock
     private ObligationDomainSupportService obligationDomainSupportService;
 
-    private ObligationMapper mapper;
     private CancelObligationService cancelObligationService;
 
     @BeforeEach
     void setUp() {
-        mapper = Mappers.getMapper(ObligationMapper.class);
+        ObligationMapper mapper = Mappers.getMapper(ObligationMapper.class);
         cancelObligationService = new CancelObligationService(
                 obligationRepository,
                 mapper,

@@ -33,14 +33,12 @@ class GetUpcomingObligationsServiceTest {
     @Mock
     private ObligationDomainSupportService obligationDomainSupportService;
 
-    private ObligationMapper mapper;
-    private Clock clock;
     private GetUpcomingObligationsService getUpcomingObligationsService;
 
     @BeforeEach
     void setUp() {
-        mapper = Mappers.getMapper(ObligationMapper.class);
-        clock = Clock.fixed(Instant.parse("2026-07-04T00:00:00Z"), ZoneOffset.UTC);
+        ObligationMapper mapper = Mappers.getMapper(ObligationMapper.class);
+        Clock clock = Clock.fixed(Instant.parse("2026-07-04T00:00:00Z"), ZoneOffset.UTC);
         getUpcomingObligationsService = new GetUpcomingObligationsService(
                 obligationRepository,
                 mapper,

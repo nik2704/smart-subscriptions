@@ -38,14 +38,12 @@ class PayObligationServiceTest {
     @Mock
     private ObligationDomainSupportService obligationDomainSupportService;
 
-    private ObligationMapper mapper;
-    private DateCalculatorService dateCalculatorService;
     private PayObligationService payObligationService;
 
     @BeforeEach
     void setUp() {
-        mapper = Mappers.getMapper(ObligationMapper.class);
-        dateCalculatorService = new DateCalculatorService();
+        ObligationMapper mapper = Mappers.getMapper(ObligationMapper.class);
+        DateCalculatorService dateCalculatorService = new DateCalculatorService();
         payObligationService = new PayObligationService(
                 obligationRepository,
                 paymentRepository,
